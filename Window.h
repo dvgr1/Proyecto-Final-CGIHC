@@ -13,20 +13,6 @@ public:
 	GLfloat getBufferHeight() { return bufferHeight; }
 	GLfloat getXChange();
 	GLfloat getYChange();
-	GLboolean getAnimacionPalanca() { return animacionPalanca; }
-	GLvoid setAnimacionPalanca(bool activacion) { animacionPalanca = activacion; }
-	GLboolean getAnimacionCanica() { return animacionCanica; }
-	GLvoid setAnimacionCanica(bool activacion) { animacionCanica = activacion; }
-	GLboolean getSubir() { return subir; }
-	GLvoid setSubir(bool subida) { subir = subida; }
-	GLint getmoverpalanca01() { return moverpalanca01; }
-	GLint getmoverpalanca02() { return moverpalanca02; }
-	GLint getmoverpalanca03() { return moverpalanca03; }
-	GLboolean getluzTablero() { return luzTablero; }
-	GLboolean getluzPaletas() { return luzPaletas; }
-	GLboolean getmusica() { return musica; }
-	GLboolean getcambioCamara() { return cambioCamara; }
-	GLboolean getcamaraLibre() { return camaraLibre; }
 	bool getShouldClose() {
 		return  glfwWindowShouldClose(mainWindow);}
 	bool* getsKeys() { return keys; }
@@ -43,18 +29,8 @@ private:
 	GLfloat lastY;
 	GLfloat xChange;
 	GLfloat yChange;
-	GLint moverpalanca01 = 0;
-	GLint moverpalanca02 = 0;
-	GLint moverpalanca03 = 0;
 	
-	GLboolean animacionPalanca;
-	GLboolean animacionCanica;
-	GLboolean subir;
-	GLboolean luzTablero;
-	GLboolean luzPaletas;
-	GLboolean musica;
-	GLboolean cambioCamara;
-	GLboolean camaraLibre;
+	
 	bool mouseFirstMoved;
 	static void ManejaTeclado(GLFWwindow* window, int key, int code, int action, int mode);
 	static void ManejaMouse(GLFWwindow* window, double xPos, double yPos);

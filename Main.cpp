@@ -1,6 +1,11 @@
 /*
-Práctica 7: Iluminación 1 
+	Proyecto Final Computo Grafico e Interacción Humano Computadora
+	Profesor: Arturo 
+	Grupo:
+	Integrantes: Gonzalez Romero Daniel Vicente 
+
 */
+
 //para cargar imagen
 #define STB_IMAGE_IMPLEMENTATION
 
@@ -25,7 +30,7 @@ Práctica 7: Iluminación 1
 #include "Camera.h"
 #include "Texture.h"
 #include "Sphere.h"
-#include"Model.h"
+#include "Model.h"
 #include "Skybox.h"
 
 //para iluminación
@@ -42,15 +47,12 @@ std::vector<Shader> shaderList;
 
 Camera camera;
 
-Texture brickTexture;
-Texture dirtTexture;
-Texture plainTexture;
-Texture pisoTexture;
-Texture AgaveTexture;
 
-Model Kitt_M;
-Model Llanta_M;
-Model Blackhawk_M;
+//Texturas 
+Texture pisoTexture;
+
+
+//Modelos 
 Model Poste_M;
 Model Puerta_M;
 Model Luciernaga_M;
@@ -209,38 +211,23 @@ int main()
 
 	CreateObjects();
 	CreateShaders();
-	cabeza.init();
-	cabeza.load();
+	
 
 	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.3f, 0.5f);
-
-	brickTexture = Texture("Textures/brick.png");
-	brickTexture.LoadTextureA();
-	dirtTexture = Texture("Textures/dirt.png");
-	dirtTexture.LoadTextureA();
-	plainTexture = Texture("Textures/plain.png");
-	plainTexture.LoadTextureA();
+	
 	pisoTexture = Texture("Textures/piso.tga");
 	pisoTexture.LoadTextureA();
-	AgaveTexture = Texture("Textures/Agave.tga");
-	AgaveTexture.LoadTextureA();
 
-	Kitt_M = Model();
-	Kitt_M.LoadModel("Models/kitt_optimizado.obj");
-	Llanta_M = Model();
-	Llanta_M.LoadModel("Models/llanta_optimizada.obj");
-	Blackhawk_M = Model();
-	Blackhawk_M.LoadModel("Models/uh60.obj");
 	Poste_M = Model();
-	Poste_M.LoadModel("Models/lamp.obj");
+	//Poste_M.LoadModel("Models/lamp.obj");
 	Puerta_M = Model();
-	Puerta_M.LoadModel("Models/puerta_previo.obj");
+	//Puerta_M.LoadModel("Models/puerta_previo.obj");
 	Luciernaga_M = Model();
-	Luciernaga_M.LoadModel("Models/luciernaga.obj");
+	//Luciernaga_M.LoadModel("Models/luciernaga.obj");
 	BaseCarrusel_M = Model();
-	BaseCarrusel_M.LoadModel("Models/base_carrusel.obj");
+	//BaseCarrusel_M.LoadModel("Models/base_carrusel.obj");
 	Caballos_M = Model();
-	Caballos_M.LoadModel("Models/caballos.obj");
+	//Caballos_M.LoadModel("Models/caballos.obj");
 	
 
 	std::vector<std::string> skyboxFaces;
@@ -261,6 +248,7 @@ int main()
 	mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
 		0.5f, 0.3f,
 		0.0f, 0.0f, 1.0f);
+
 	//contador de luces puntuales
 	unsigned int pointLightCount = 0;
 	//Declaración de primer luz puntual
@@ -277,19 +265,6 @@ int main()
 	/*pointLightCount++;*/
 	//no agregamos una nueva pointLigth, ya que el segundo arreglo tiene el mismo tamaño
 
-	//pointLights[2] = PointLight(1.0f, 0.0f, 0.0f,
-	//	1.0f, 1.0f,
-	//	0.0f, 3.0f, 4.0f,
-	//	0.3f, 0.2f, 0.1f);
-	//pointLightCount++;
-
-	//solución al previo 
-	//arr2pointLights[0] = pointLights[3];
-	//arr2pointLights[1] = pointLights[0];
-	//arr2pointLights[2] = pointLights[1];
-	//arr2pointLights[3] = pointLights[2];
-
-
 
 
 	unsigned int spotLightCount = 0;
@@ -303,45 +278,23 @@ int main()
 	spotLightCount++;
 
 	//luz fija
-	spotLights[1] = SpotLight(0.6f, 0.3f, 0.2f,
-		2.0f, 2.0f,
-		1.5f, 1.6f, 6.0f,
-		0.0f, -1.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		60.0f);
-	spotLightCount++;
-
-	spotLights[2] = SpotLight(1.0f, 1.0f, 1.0f,
-		0.0f, 2.0f,
-		1.5f, 1.6f, 6.0f,
-		-1.0f, 0.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		15.0f);
-	spotLightCount++;
-
-	spotLights[3] = SpotLight(1.0f, 1.0f, 1.0f,
-		0.0f, 2.0f,
-		20.0f, 1.6f, 6.0f,
-		1.0f, 0.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		15.0f);
-	spotLightCount++;
 	
 
-	
-
-
-	//se crean mas luces puntuales y spotlight 
 	
 	GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePosition = 0,
 		uniformSpecularIntensity = 0, uniformShininess = 0;
 	GLuint uniformColor = 0;
 	glm::mat4 projection = glm::perspective(45.0f, (GLfloat)mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 1000.0f);
-	////Loop mientras no se cierra la ventana
+	
+	
+	//Loop mientras no se cierra la ventana
+
+	// Variables de animacion
 	giro_carrusel = 0.0f;
 	giro_carrusel_offset = 10.0f;
 	mov_caballos = 0.0f;
 	mov_caballos_offset = 10.0f;
+
 	while (!mainWindow.getShouldClose())
 	{
 		GLfloat now = glfwGetTime();
@@ -349,11 +302,15 @@ int main()
 		deltaTime += (now - lastTime) / limitFPS;
 		lastTime = now;
 
+
+		//Animación caballos carrusel 
 		if (mov_caballos_offset > 360)
 			mov_caballos_offset = 10.5f;
 
 		giro_carrusel += 0.02*giro_carrusel_offset * deltaTime;
 		mov_caballos_offset += 0.5f;
+
+
 		//Recibir eventos del usuario
 		glfwPollEvents();
 		camera.keyControl(mainWindow.getsKeys(), deltaTime);
@@ -385,7 +342,7 @@ int main()
 		spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
 
 		//información al shader de fuentes de iluminación
-		shaderList[0].SetDirectionalLight(&mainLight);
+		/*shaderList[0].SetDirectionalLight(&mainLight);
 		if (mainWindow.getOn_Off_Light()) {
 			shaderList[0].SetPointLights(pointLights, pointLightCount);
 		}
@@ -397,16 +354,11 @@ int main()
 			else {
 				shaderList[0].SetPointLights(arr2pointLights, pointLightCount - 1);
 			}
-		}
+		}*/
 		shaderList[0].SetSpotLights(spotLights, spotLightCount);
-		//Cambio de luz adelante y atrás
-		mainWindow.getAdelante_Atras() ? spotLights[2].SetPos(glm::vec3(1.5f+mainWindow.getmuevex(), 1.6f, 6.0f)) :
-			spotLights[3].SetPos(glm::vec3(20.0f+mainWindow.getmuevex(), 1.6f, 6.0f));
-		//apagar y encender a la luciérnaga
-		/*mainWindow.getLamp_luc() ? shaderList[0].SetPointLights(arr2pointLights, pointLightCount) :
-			shaderList[0].SetPointLights(arr2pointLights, pointLightCount - 1);*/
 		
-		//vas a poner una luciérnaga para el ejercicio 3.
+		
+		// Matrices de transformaciones
 		glm::mat4 model(1.0);
 		glm::mat4 modelaux(1.0);
 		glm::mat4 modelAux_Carrusel(1.0f);
@@ -423,75 +375,9 @@ int main()
 
 		meshList[2]->RenderMesh();
 		
-		//Instancia del coche 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f+mainWindow.getmuevex(), 0.5f, -3.0f));
-		modelaux = model;
-		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Kitt_M.RenderModel();
-
-		//Llanta delantera izquierda
-		model = modelaux;
-		model = glm::translate(model, glm::vec3(7.0f, -0.5f, 8.0f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
-		color = glm::vec3(0.5f, 0.5f, 0.5f);//llanta con color gris
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Llanta_M.RenderModel();
 
 
-		//Llanta trasera izquierda
-		model = modelaux;
-		model = glm::translate(model, glm::vec3(15.5f, -0.5f, 8.0f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Llanta_M.RenderModel();
-
-
-		//Llanta delantera derecha
-		model = modelaux;
-		model = glm::translate(model, glm::vec3(7.0f, -0.5f, 1.5f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Llanta_M.RenderModel();
-
-		//Llanta trasera derecha
-		model = modelaux;
-		model = glm::translate(model, glm::vec3(15.5f, -0.5f, 1.5f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Llanta_M.RenderModel();
-	
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0, 5.0f, 6.0));
-		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Blackhawk_M.RenderModel();
-		//model = glm::mat4(1.0f);
-		//model = glm::translate(model, glm::vec3(0.7f, 5.0f, 6.0f));
-		//model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
-		//color = glm::vec3(1.0f, 1.0f, 1.0f);
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		//cabeza.render();
-		//spotLights[1].SetPos(glm::vec3(45.0f, 0.0f, -8.0f));
-
-		//lampara
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.0f, 2.15f, 2.0f));
-		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Poste_M.RenderModel();
-
-		//Carrusel
+		// Base Carrusel
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, 2.15f, 2.0f));
 		model = glm::rotate(model, glm::radians(giro_carrusel), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -500,17 +386,13 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		BaseCarrusel_M.RenderModel();
 
+		// Caballos Carrusel
 		model = modelAux_Carrusel;
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f + glm::radians(100*sin(mov_caballos_offset*0.008)), 0.0f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Caballos_M.RenderModel();
-		//luciernaga
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.0f, 2.15f, 10.0f));
-		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Luciernaga_M.RenderModel();
+
 
 		//puerta
 		model = glm::mat4(1.0f);
@@ -519,16 +401,12 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Puerta_M.RenderModel();
 		spotLights[1].SetPos(glm::vec3(45.0f, 13.0f, -8.0f));
-		//Agave ¿qué sucede si lo renderizan antes del coche y el helicóptero?
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 1.0f, -4.0f));
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		
 		
 		//blending: transparencia o traslucidez
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		AgaveTexture.UseTexture();
+		//AgaveTexture.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[3]->RenderMesh();
 		glDisable(GL_BLEND);

@@ -4,16 +4,6 @@ Window::Window()
 {
 	width = 800;
 	height = 600;
-	animacionPalanca = false;
-	moverpalanca01 = 0;
-	moverpalanca02 = 0;
-	moverpalanca03 = 0;
-	luzPaletas = true;
-	luzTablero = true;
-	musica = false;
-	cambioCamara = false;
-	camaraLibre = false;
-	subir = true;
 
 	for (size_t i = 0; i < 1024; i++)
 	{
@@ -116,65 +106,6 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 	{
 		glfwSetWindowShouldClose(window, GL_TRUE);
 	}
-
-	if (key == GLFW_KEY_Z)
-	{
-		if (action == GLFW_PRESS) {
-			theWindow->moverpalanca01 = 60.0;
-		}
-		// Si la tecla Z se libera, establece el valor de moverpalanca01 en 0.0
-		else if (action == GLFW_RELEASE) {
-			theWindow->moverpalanca01 = 0.0;
-		}
-	}
-
-	if (key == GLFW_KEY_M)
-	{
-		if (action == GLFW_PRESS) {
-			theWindow->moverpalanca02 = 60.0;
-		}
-		// Si la tecla Z se libera, establece el valor de moverpalanca01 en 0.0
-		else if (action == GLFW_RELEASE) {
-			theWindow->moverpalanca02 = 0.0;
-		}
-	}
-
-	if (key == GLFW_KEY_V)
-	{
-		if (action == GLFW_PRESS) {
-			theWindow->moverpalanca03 = 60.0;
-		}
-		// Si la tecla Z se libera, establece el valor de moverpalanca01 en 0.0
-		else if (action == GLFW_RELEASE) {
-			theWindow->moverpalanca03 = 0.0;
-		}
-	}
-	
-
-	if (key == GLFW_KEY_P && action == GLFW_PRESS)
-	{
-		theWindow->luzPaletas = !(theWindow->luzPaletas);
-	}
-
-	if (key == GLFW_KEY_T && action == GLFW_PRESS)
-	{
-		theWindow->luzTablero = !(theWindow->luzTablero);
-	}
-
-	if (key == GLFW_KEY_G && action == GLFW_PRESS)
-	{
-		theWindow->musica = !(theWindow->musica);
-	}
-
-	if (key == GLFW_KEY_H && action == GLFW_PRESS)
-	{
-		theWindow->cambioCamara = !(theWindow->cambioCamara);
-	}
-	
-	if (key == GLFW_KEY_J && action == GLFW_PRESS)
-	{
-		theWindow->camaraLibre = !(theWindow->camaraLibre);
-	}
 	
 
 	if (key >= 0 && key < 1024)
@@ -216,9 +147,7 @@ void Window::ManejaMouseBoton(GLFWwindow* window, int button, int action, int mo
 	
 	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
 	{
-		theWindow->animacionPalanca = true;
-		theWindow->animacionCanica = true;
-		//printf("se presiono la tecla ");
+		//printf("se presiono un boton del mouse ");
 	}
 }
 
