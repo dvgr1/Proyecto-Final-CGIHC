@@ -246,8 +246,8 @@ int main()
 
 	//luz direccional, sólo 1 y siempre debe de existir
 	mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
-		0.5f, 0.3f,
-		0.0f, 0.0f, 1.0f);
+		0.7f, 0.0f,
+		0.0f, 0.0f, -1.0f);
 
 	//contador de luces puntuales
 	unsigned int pointLightCount = 0;
@@ -319,7 +319,11 @@ int main()
 		// Clear the window
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		//Dibuja el skybox
 		skybox.DrawSkybox(camera.calculateViewMatrix(), projection);
+
+		// Luces
 		shaderList[0].UseShader();
 		uniformModel = shaderList[0].GetModelLocation();
 		uniformProjection = shaderList[0].GetProjectionLocation();
@@ -336,26 +340,12 @@ int main()
 		glUniform3f(uniformEyePosition, camera.getCameraPosition().x, camera.getCameraPosition().y, camera.getCameraPosition().z);
 
 		// luz ligada a la cámara de tipo flash
-		//sirve para que en tiempo de ejecución (dentro del while) se cambien propiedades de la luz
-			glm::vec3 lowerLight = camera.getCameraPosition();
+		glm::vec3 lowerLight = camera.getCameraPosition();
 		lowerLight.y -= 0.3f;
 		spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
 
-		//información al shader de fuentes de iluminación
-		/*shaderList[0].SetDirectionalLight(&mainLight);
-		if (mainWindow.getOn_Off_Light()) {
-			shaderList[0].SetPointLights(pointLights, pointLightCount);
-		}
-		else {
-			shaderList[0].SetPointLights(pointLights, pointLightCount-1);
-			if (mainWindow.getLamp_luc()) {
-				shaderList[0].SetPointLights(arr2pointLights, pointLightCount);
-			}
-			else {
-				shaderList[0].SetPointLights(arr2pointLights, pointLightCount - 1);
-			}
-		}*/
 		shaderList[0].SetSpotLights(spotLights, spotLightCount);
+		shaderList[0].SetDirectionalLight(&mainLight);	// Luz ambiental
 		
 		
 		// Matrices de transformaciones
@@ -364,12 +354,13 @@ int main()
 		glm::mat4 modelAux_Carrusel(1.0f);
 		glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f);
 
+
+		// Piso
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, -1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(30.0f, 1.0f, 30.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
 		pisoTexture.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
