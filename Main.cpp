@@ -58,6 +58,8 @@ Model Puerta_M;
 Model Luciernaga_M;
 Model BaseCarrusel_M;
 Model Caballos_M;
+Model Planta_M;
+Model Banca_M;
 
 float giro_carrusel;
 float giro_carrusel_offset;
@@ -211,10 +213,10 @@ int main()
 
 	CreateObjects();
 	CreateShaders();
-	
+
 
 	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.3f, 0.5f);
-	
+
 	pisoTexture = Texture("Textures/piso.tga");
 	pisoTexture.LoadTextureA();
 
@@ -228,6 +230,10 @@ int main()
 	//BaseCarrusel_M.LoadModel("Models/base_carrusel.obj");
 	Caballos_M = Model();
 	//Caballos_M.LoadModel("Models/caballos.obj");
+	Planta_M = Model();
+	Planta_M.LoadModel("Models/plantas.obj"); // Cubo en el origen para referencia
+	Banca_M = Model();
+	Banca_M.LoadModel("Models/bancas.obj");
 	
 
 	std::vector<std::string> skyboxFaces;
@@ -357,7 +363,7 @@ int main()
 
 		// Piso
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(0.0f, -0.2f, 0.0f));
 		model = glm::scale(model, glm::vec3(30.0f, 1.0f, 30.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
@@ -384,6 +390,13 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Caballos_M.RenderModel();
 
+		//Plantas
+		model = glm::mat4(1.0f);
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Planta_M.RenderModel();
+
+		//Bancas
+		Banca_M.RenderModel();
 
 		//puerta
 		model = glm::mat4(1.0f);
