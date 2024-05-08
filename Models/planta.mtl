@@ -1,0 +1,34 @@
+# Blender 4.1.1 MTL File: 'uploads_files_3946293_pot+plant.blend'
+# www.blender.org
+
+newmtl Material
+Ns 41.838863
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Planta/soil diffuse.jpg
+
+newmtl Material.001
+Ns 502.809967
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Planta/Untitled.png
+map_Bump -bm 0.200000 Planta/normal.png
+
+newmtl Material.002
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Planta/pot diffuse.png
+map_Bump -bm 0.300000 Planta/pot normal.png
