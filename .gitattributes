@@ -1,0 +1,2 @@
+sombrillas.* filter=lfs diff=lfs merge=lfs -text
+mesa_bancos.* filter=lfs diff=lfs merge=lfs -text
