@@ -4,3 +4,5 @@ Models/mesa_bancos.mtl filter=lfs diff=lfs merge=lfs -text
 Models/mesa_bancos.obj filter=lfs diff=lfs merge=lfs -text
 Models/sombrillas.mtl filter=lfs diff=lfs merge=lfs -text
 Models/sombrillas.obj filter=lfs diff=lfs merge=lfs -text
+Models/mesa_sillas.mtl filter=lfs diff=lfs merge=lfs -text
+Models/mesa_sillas.obj filter=lfs diff=lfs merge=lfs -text
