@@ -2,7 +2,9 @@
 	Proyecto Final Computo Grafico e Interacción Humano Computadora
 	Profesor: Arturo 
 	Grupo:
-	Integrantes: Gonzalez Romero Daniel Vicente 
+	Integrantes: 
+				Gonzalez Romero Daniel Vicente - 317071201
+				Hernandez Lara Jesus Eduardo - 316143671
 
 */
 
@@ -65,6 +67,7 @@ Model CoffeeShop_M;
 Model MesaBancos_M;
 Model MesaSillas_M;
 Model Sombrillas_M;
+Model Arboles_M;
 
 float giro_carrusel;
 float giro_carrusel_offset;
@@ -247,6 +250,8 @@ int main()
 	MesaSillas_M.LoadModel("Models/mesa_sillas.obj");
 	Sombrillas_M = Model();
 	Sombrillas_M.LoadModel("Models/sombrillas.obj");
+	Arboles_M = Model();
+	Arboles_M.LoadModel("Models/Arboles.obj");
 
 	
 
@@ -395,14 +400,14 @@ int main()
 		modelAux_Carrusel = model;
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		BaseCarrusel_M.RenderModel();
+		//BaseCarrusel_M.RenderModel();
 
 		// Caballos Carrusel
 		model = modelAux_Carrusel;
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f + glm::radians(100*sin(mov_caballos_offset*0.008)), 0.0f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Caballos_M.RenderModel();
+		//Caballos_M.RenderModel();
 
 		//Plantas
 		model = glm::mat4(1.0f);
@@ -411,11 +416,15 @@ int main()
 
 		//Bancas
 		Banca_M.RenderModel();
+		
+
 		//Coffee shop
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(-50.0f, 0.0f, -80.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		CoffeeShop_M.RenderModel();
+
+
 		//Mesas afuera
 		//model = glm::mat4(1.0f);
 		Sombrillas_M.RenderModel();
@@ -435,10 +444,15 @@ int main()
 		spotLights[1].SetPos(glm::vec3(45.0f, 13.0f, -8.0f));
 		
 		
-		//blending: transparencia o traslucidez
+		// Blending: transparencia o traslucidez
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		//AgaveTexture.UseTexture();
+		
+		// Arboles (Se dibuja aqui ya que los planos que lo conforman necesitan transparencia)
+		model = glm::mat4(1.0f);
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Arboles_M.RenderModel();
+	
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[3]->RenderMesh();
 		glDisable(GL_BLEND);
