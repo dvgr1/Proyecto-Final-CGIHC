@@ -60,6 +60,10 @@ Model BaseCarrusel_M;
 Model Caballos_M;
 Model Planta_M;
 Model Banca_M;
+Model Personaje_M;
+Model CoffeeShop_M;
+Model MesaBancos_M;
+Model MesaSillas_M;
 
 float giro_carrusel;
 float giro_carrusel_offset;
@@ -234,6 +238,13 @@ int main()
 	Planta_M.LoadModel("Models/plantas.obj"); // Cubo en el origen para referencia
 	Banca_M = Model();
 	Banca_M.LoadModel("Models/bancas.obj");
+	CoffeeShop_M = Model();
+	CoffeeShop_M.LoadModel("Models/coffe_shop.obj");
+	MesaBancos_M = Model();
+	MesaBancos_M.LoadModel("Models/mesa_bancos.obj");
+	MesaSillas_M = Model();
+	MesaSillas_M.LoadModel("Models/mesa_sillas.obj");
+
 	
 
 	std::vector<std::string> skyboxFaces;
@@ -397,6 +408,10 @@ int main()
 
 		//Bancas
 		Banca_M.RenderModel();
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-50.0f, 0.0f, -80.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		CoffeeShop_M.RenderModel();
 
 		//puerta
 		model = glm::mat4(1.0f);
