@@ -64,6 +64,7 @@ Model Personaje_M;
 Model CoffeeShop_M;
 Model MesaBancos_M;
 Model MesaSillas_M;
+Model Sombrillas_M;
 
 float giro_carrusel;
 float giro_carrusel_offset;
@@ -244,6 +245,8 @@ int main()
 	MesaBancos_M.LoadModel("Models/mesa_bancos.obj");
 	MesaSillas_M = Model();
 	MesaSillas_M.LoadModel("Models/mesa_sillas.obj");
+	Sombrillas_M = Model();
+	Sombrillas_M.LoadModel("Models/sombrillas.obj");
 
 	
 
@@ -408,10 +411,20 @@ int main()
 
 		//Bancas
 		Banca_M.RenderModel();
+		//Coffee shop
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(-50.0f, 0.0f, -80.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		CoffeeShop_M.RenderModel();
+		//Mesas afuera
+		//model = glm::mat4(1.0f);
+		Sombrillas_M.RenderModel();
+
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-40.0f, -2.0f, -80.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		MesaBancos_M.RenderModel();
 
 		//puerta
 		model = glm::mat4(1.0f);
