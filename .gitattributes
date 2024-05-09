@@ -6,3 +6,5 @@ Models/sombrillas.mtl filter=lfs diff=lfs merge=lfs -text
 Models/sombrillas.obj filter=lfs diff=lfs merge=lfs -text
 Models/mesa_sillas.mtl filter=lfs diff=lfs merge=lfs -text
 Models/mesa_sillas.obj filter=lfs diff=lfs merge=lfs -text
+Models/sofa_cafe.mtl filter=lfs diff=lfs merge=lfs -text
+Models/sofa_cafe.obj filter=lfs diff=lfs merge=lfs -text
