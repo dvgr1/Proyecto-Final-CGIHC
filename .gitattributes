@@ -1,2 +1,4 @@
 sombrillas.* filter=lfs diff=lfs merge=lfs -text
 mesa_bancos.* filter=lfs diff=lfs merge=lfs -text
+Models/mesa_bancos.mtl filter=lfs diff=lfs merge=lfs -text
+Models/mesa_bancos.obj filter=lfs diff=lfs merge=lfs -text
