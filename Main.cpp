@@ -67,6 +67,7 @@ Model CoffeeShop_M;
 Model MesaBancos_M;
 Model MesaSillas_M;
 Model Sombrillas_M;
+Model Sillon_M;
 Model Arboles_M;
 
 float giro_carrusel;
@@ -252,7 +253,8 @@ int main()
 	Sombrillas_M.LoadModel("Models/sombrillas.obj");
 	Arboles_M = Model();
 	Arboles_M.LoadModel("Models/Arboles.obj");
-
+	Sillon_M = Model();
+	Sillon_M.LoadModel("Models/sofa_cafe.obj");
 	
 
 	std::vector<std::string> skyboxFaces;
@@ -428,6 +430,10 @@ int main()
 		//Mesas afuera
 		//model = glm::mat4(1.0f);
 		Sombrillas_M.RenderModel();
+		//Mesas dentro de la cafetería
+		MesaSillas_M.RenderModel();
+		//Sillón de la cafetería
+		Sillon_M.RenderModel();
 
 
 		model = glm::mat4(1.0f);
@@ -453,6 +459,10 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Arboles_M.RenderModel();
 	
+		
+		
+
+
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[3]->RenderMesh();
 		glDisable(GL_BLEND);
