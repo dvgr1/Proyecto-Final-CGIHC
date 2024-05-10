@@ -69,12 +69,22 @@ Model MesaSillas_M;
 Model Sombrillas_M;
 Model Sillon_M;
 Model Arboles_M;
+Model CaballoTorso_M;
+Model CaballoPatasT_M;
+Model CaballoPatasD_M;
+Model CaballoCabeza_M;
+Model NiñoPrueba_M;
 
+
+
+// Variables para animacion
 float giro_carrusel;
 float giro_carrusel_offset;
 
 float mov_caballos;
 float mov_caballos_offset;
+
+float pruebaCaballo;
 
 
 Skybox skybox;
@@ -255,6 +265,16 @@ int main()
 	Arboles_M.LoadModel("Models/Arboles.obj");
 	Sillon_M = Model();
 	Sillon_M.LoadModel("Models/sofa_cafe.obj");
+	CaballoTorso_M = Model();
+	CaballoTorso_M.LoadModel("Models/TorsoCaballo.obj");
+	CaballoPatasT_M = Model();
+	CaballoPatasT_M.LoadModel("Models/PatasTraserasC.obj");
+	CaballoPatasD_M = Model();
+	CaballoPatasD_M.LoadModel("Models/PatasDelanterasC.obj");
+	CaballoCabeza_M = Model();
+	CaballoCabeza_M.LoadModel("Models/CabezaCaballo.obj");
+	NiñoPrueba_M = Model();
+	NiñoPrueba_M.LoadModel("Models/NiñoPrueba.obj");
 	
 
 	std::vector<std::string> skyboxFaces;
@@ -321,6 +341,7 @@ int main()
 	giro_carrusel_offset = 10.0f;
 	mov_caballos = 0.0f;
 	mov_caballos_offset = 10.0f;
+	pruebaCaballo = 0.0f;
 
 	while (!mainWindow.getShouldClose())
 	{
@@ -336,6 +357,8 @@ int main()
 
 		giro_carrusel += 0.02*giro_carrusel_offset * deltaTime;
 		mov_caballos_offset += 0.5f;
+
+		pruebaCaballo += 0.005f;
 
 
 		//Recibir eventos del usuario
@@ -436,6 +459,7 @@ int main()
 		Sillon_M.RenderModel();
 
 
+
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(-40.0f, -2.0f, -80.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -448,6 +472,10 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Puerta_M.RenderModel();
 		spotLights[1].SetPos(glm::vec3(45.0f, 13.0f, -8.0f));
+
+
+		
+
 		
 		
 		// Blending: transparencia o traslucidez
@@ -455,13 +483,32 @@ int main()
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		
 		// Arboles (Se dibuja aqui ya que los planos que lo conforman necesitan transparencia)
+		
 		model = glm::mat4(1.0f);
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Arboles_M.RenderModel();
-	
-		
-		
 
+
+		// Caballo
+
+		// Torso
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, (0.0f + pruebaCaballo)));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		CaballoTorso_M.RenderModel();
+
+		// Patas Traseras
+		CaballoPatasT_M.RenderModel();
+
+		// Patas Delanteras
+		CaballoPatasD_M.RenderModel();
+
+		// Cabeza
+		CaballoCabeza_M.RenderModel();
+
+		// Niño montado de prueba falta texturizar
+		NiñoPrueba_M.RenderModel();
+		
 
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[3]->RenderMesh();
