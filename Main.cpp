@@ -69,13 +69,21 @@ Model MesaSillas_M;
 Model Sombrillas_M;
 Model Sillon_M;
 Model Arboles_M;
+Model Licoreria_M;
+Model CaballoTorso_M;
+Model CaballoPatasT_M;
+Model CaballoPatasD_M;
+Model CaballoCabeza_M;
+Model NiñoPrueba_M;
 
+//variables para animacion
 float giro_carrusel;
 float giro_carrusel_offset;
 
 float mov_caballos;
 float mov_caballos_offset;
 
+float pruebaCaballo;
 
 Skybox skybox;
 
@@ -255,6 +263,18 @@ int main()
 	Arboles_M.LoadModel("Models/Arboles.obj");
 	Sillon_M = Model();
 	Sillon_M.LoadModel("Models/sofa_cafe.obj");
+	Licoreria_M = Model();
+	Licoreria_M.LoadModel("Models/licoreria.obj");
+	CaballoTorso_M = Model();
+	CaballoTorso_M.LoadModel("Models/TorsoCaballo.obj");
+	CaballoPatasT_M = Model();
+	CaballoPatasT_M.LoadModel("Models/PatasTraserasC.obj");
+	CaballoPatasD_M = Model();
+	CaballoPatasD_M.LoadModel("Models/PatasDelanterasC.obj");
+	CaballoCabeza_M = Model();
+	CaballoCabeza_M.LoadModel("Models/CabezaCaballo.obj");
+	NiñoPrueba_M = Model();
+	NiñoPrueba_M.LoadModel("Models/NiñoPrueba.obj");
 	
 
 	std::vector<std::string> skyboxFaces;
@@ -321,6 +341,7 @@ int main()
 	giro_carrusel_offset = 10.0f;
 	mov_caballos = 0.0f;
 	mov_caballos_offset = 10.0f;
+	pruebaCaballo = 0.0f;
 
 	while (!mainWindow.getShouldClose())
 	{
@@ -338,6 +359,7 @@ int main()
 		mov_caballos_offset += 0.5f;
 
 
+		pruebaCaballo += 0.005f;
 		//Recibir eventos del usuario
 		glfwPollEvents();
 		camera.keyControl(mainWindow.getsKeys(), deltaTime);
@@ -459,8 +481,30 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Arboles_M.RenderModel();
 	
-		
-		
+		//licoreria
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(50.0f, 0.0f, -150.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Licoreria_M.RenderModel();
+
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, (0.0f + pruebaCaballo)));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		CaballoTorso_M.RenderModel();
+
+		// Patas Traseras
+		CaballoPatasT_M.RenderModel();
+
+		// Patas Delanteras
+		CaballoPatasD_M.RenderModel();
+
+		// Cabeza
+		CaballoCabeza_M.RenderModel();
+
+		// Niño montado de prueba falta texturizar
+		NiñoPrueba_M.RenderModel();
+
 
 
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
