@@ -69,34 +69,31 @@ Model MesaSillas_M;
 Model Sombrillas_M;
 Model Sillon_M;
 Model Arboles_M;
-<<<<<<< HEAD
-Model Licoreria_M;
-=======
->>>>>>> 56348acb17d1ead9e4ecabfe1dda4d061d03f39e
 Model CaballoTorso_M;
 Model CaballoPatasT_M;
 Model CaballoPatasD_M;
 Model CaballoCabeza_M;
-Model NiñoPrueba_M;
+Model Niño_M;
+Model Licoreria_M;
 
-<<<<<<< HEAD
-//variables para animacion
-=======
 
 
 // Variables para animacion
->>>>>>> 56348acb17d1ead9e4ecabfe1dda4d061d03f39e
 float giro_carrusel;
 float giro_carrusel_offset;
 
 float mov_caballos;
 float mov_caballos_offset;
 
-float pruebaCaballo;
-<<<<<<< HEAD
-=======
+float CaballoTorso;
+float CaballoTorso_offset;
+float CaballoPatasT;
+float CaballoPatasT_offset;
+float CaballoPatasD;
+float CaballoPatasD_offset;
+float CaballoCabeza;
+float CaballoCabeza_offset;
 
->>>>>>> 56348acb17d1ead9e4ecabfe1dda4d061d03f39e
 
 Skybox skybox;
 
@@ -247,8 +244,11 @@ int main()
 
 	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.3f, 0.5f);
 
+
 	pisoTexture = Texture("Textures/piso.tga");
 	pisoTexture.LoadTextureA();
+
+
 
 	Poste_M = Model();
 	//Poste_M.LoadModel("Models/lamp.obj");
@@ -260,10 +260,16 @@ int main()
 	//BaseCarrusel_M.LoadModel("Models/base_carrusel.obj");
 	Caballos_M = Model();
 	//Caballos_M.LoadModel("Models/caballos.obj");
+
+		//Modelos ambientacion general
 	Planta_M = Model();
-	Planta_M.LoadModel("Models/plantas.obj"); // Cubo en el origen para referencia
+	Planta_M.LoadModel("Models/plantas.obj"); // Con Cubo en el origen para referencia
 	Banca_M = Model();
 	Banca_M.LoadModel("Models/bancas.obj");
+	Arboles_M = Model();
+	Arboles_M.LoadModel("Models/Arboles.obj");
+
+		//Modelos Tienda 1
 	CoffeeShop_M = Model();
 	CoffeeShop_M.LoadModel("Models/coffe_shop.obj");
 	MesaBancos_M = Model();
@@ -272,15 +278,14 @@ int main()
 	MesaSillas_M.LoadModel("Models/mesa_sillas.obj");
 	Sombrillas_M = Model();
 	Sombrillas_M.LoadModel("Models/sombrillas.obj");
-	Arboles_M = Model();
-	Arboles_M.LoadModel("Models/Arboles.obj");
 	Sillon_M = Model();
 	Sillon_M.LoadModel("Models/sofa_cafe.obj");
-<<<<<<< HEAD
+
+		//Modelos Tienda 2
 	Licoreria_M = Model();
 	Licoreria_M.LoadModel("Models/licoreria.obj");
-=======
->>>>>>> 56348acb17d1ead9e4ecabfe1dda4d061d03f39e
+
+		// Modelos Caballo 
 	CaballoTorso_M = Model();
 	CaballoTorso_M.LoadModel("Models/TorsoCaballo.obj");
 	CaballoPatasT_M = Model();
@@ -289,8 +294,8 @@ int main()
 	CaballoPatasD_M.LoadModel("Models/PatasDelanterasC.obj");
 	CaballoCabeza_M = Model();
 	CaballoCabeza_M.LoadModel("Models/CabezaCaballo.obj");
-	NiñoPrueba_M = Model();
-	NiñoPrueba_M.LoadModel("Models/NiñoPrueba.obj");
+	Niño_M = Model();
+	Niño_M.LoadModel("Models/Niño.obj");
 	
 
 	std::vector<std::string> skyboxFaces;
@@ -357,7 +362,17 @@ int main()
 	giro_carrusel_offset = 10.0f;
 	mov_caballos = 0.0f;
 	mov_caballos_offset = 10.0f;
-	pruebaCaballo = 0.0f;
+
+	CaballoTorso = 0.0f;
+	CaballoTorso_offset = 0.005f;
+	CaballoPatasT = 0.0f;
+	CaballoPatasT_offset = -0.05f;
+	CaballoPatasD = 0.0f;
+	CaballoPatasD_offset = 0.05f;
+	CaballoCabeza = 0.0f;
+	CaballoCabeza_offset = 0.09f;
+	
+	
 
 	while (!mainWindow.getShouldClose())
 	{
@@ -374,10 +389,25 @@ int main()
 		giro_carrusel += 0.02*giro_carrusel_offset * deltaTime;
 		mov_caballos_offset += 0.5f;
 
-		pruebaCaballo += 0.005f;
+
+		// Prueba Animación Caballo Carrito
+		CaballoCabeza += CaballoCabeza_offset;
+		if (CaballoCabeza >= 25.0f || CaballoCabeza <= -25.0f)
+			CaballoCabeza_offset = (CaballoCabeza_offset * (- 1));
+
+		CaballoPatasT += CaballoPatasT_offset;
+		if (CaballoPatasT >= 45.0f || CaballoPatasT <= -45.0f)
+			CaballoPatasT_offset = (CaballoPatasT_offset * (-1));
+
+		CaballoPatasD += CaballoPatasD_offset;
+		if (CaballoPatasD >= 45.0f || CaballoPatasD <= -45.0f)
+			CaballoPatasD_offset = (CaballoPatasD_offset * (-1));
+			
+		CaballoTorso += 0.005f;
 
 
-		pruebaCaballo += 0.005f;
+
+
 		//Recibir eventos del usuario
 		glfwPollEvents();
 		camera.keyControl(mainWindow.getsKeys(), deltaTime);
@@ -487,7 +517,7 @@ int main()
 		model = glm::translate(model, glm::vec3(55.0f, 0.0f, -8.0f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Puerta_M.RenderModel();
+		//Puerta_M.RenderModel();
 		spotLights[1].SetPos(glm::vec3(45.0f, 13.0f, -8.0f));
 
 
@@ -499,60 +529,55 @@ int main()
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		
-		// Arboles (Se dibuja aqui ya que los planos que lo conforman necesitan transparencia)
 		
+		// Arboles (Se dibuja aqui ya que los planos que lo conforman necesitan transparencia)
 		model = glm::mat4(1.0f);
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Arboles_M.RenderModel();
-<<<<<<< HEAD
-	
-		//licoreria
+
+
+		//Licoreria
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(50.0f, 0.0f, -150.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Licoreria_M.RenderModel();
 
 
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, (0.0f + pruebaCaballo)));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		CaballoTorso_M.RenderModel();
-
-		// Patas Traseras
-		CaballoPatasT_M.RenderModel();
-
-		// Patas Delanteras
-		CaballoPatasD_M.RenderModel();
-
-		// Cabeza
-		CaballoCabeza_M.RenderModel();
-
-		// Niño montado de prueba falta texturizar
-		NiñoPrueba_M.RenderModel();
-
-=======
->>>>>>> 56348acb17d1ead9e4ecabfe1dda4d061d03f39e
-
 
 		// Caballo
 
 		// Torso
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, (0.0f + pruebaCaballo)));
+		modelaux = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(170.0f, 6.2f, (-170.0f + CaballoTorso)));
+		modelaux = model;
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		CaballoTorso_M.RenderModel();
 
 		// Patas Traseras
+		model = glm::translate(model, glm::vec3(0.0f, -0.6f, -3.2f));
+		model = glm::rotate(model, glm::radians(CaballoPatasT), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		CaballoPatasT_M.RenderModel();
 
 		// Patas Delanteras
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(0.1f, -1.4f, 1.9f ));
+		model = glm::rotate(model, glm::radians((CaballoPatasD)), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		CaballoPatasD_M.RenderModel();
 
 		// Cabeza
+		model = modelaux;
+		model = glm::rotate(model, glm::radians(CaballoCabeza), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(0.1f, 1.35f, 2.95f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		CaballoCabeza_M.RenderModel();
 
-		// Niño montado de prueba falta texturizar
-		NiñoPrueba_M.RenderModel();
+		// Niño montado
+		model = modelaux;
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Niño_M.RenderModel();
 		
 
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
