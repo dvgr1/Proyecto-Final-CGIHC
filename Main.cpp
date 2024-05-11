@@ -73,7 +73,7 @@ Model CaballoTorso_M;
 Model CaballoPatasT_M;
 Model CaballoPatasD_M;
 Model CaballoCabeza_M;
-Model Ni�o_M;
+Model Niño_M;
 Model Licoreria_M;
 
 
@@ -269,7 +269,7 @@ int main()
 	Arboles_M = Model();
 	Arboles_M.LoadModel("Models/Arboles.obj");
 
-	//Modelos Tienda 1
+		//Modelos Tienda 1
 	CoffeeShop_M = Model();
 	CoffeeShop_M.LoadModel("Models/coffe_shop.obj");
 	MesaBancos_M = Model();
@@ -281,11 +281,11 @@ int main()
 	Sillon_M = Model();
 	Sillon_M.LoadModel("Models/sofa_cafe.obj");
 
-	//Modelos Tienda 2
+		//Modelos Tienda 2
 	Licoreria_M = Model();
 	Licoreria_M.LoadModel("Models/licoreria.obj");
 
-	// Modelos Caballo 
+		// Modelos Caballo 
 	CaballoTorso_M = Model();
 	CaballoTorso_M.LoadModel("Models/TorsoCaballo.obj");
 	CaballoPatasT_M = Model();
@@ -294,9 +294,9 @@ int main()
 	CaballoPatasD_M.LoadModel("Models/PatasDelanterasC.obj");
 	CaballoCabeza_M = Model();
 	CaballoCabeza_M.LoadModel("Models/CabezaCaballo.obj");
-	Ni�o_M = Model();
-	Ni�o_M.LoadModel("Models/Ni�o.obj");
-
+	Niño_M = Model();
+	Niño_M.LoadModel("Models/Niño.obj");
+	
 
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
@@ -371,8 +371,8 @@ int main()
 	CaballoPatasD_offset = 0.05f;
 	CaballoCabeza = 0.0f;
 	CaballoCabeza_offset = 0.09f;
-
-
+	
+	
 
 	while (!mainWindow.getShouldClose())
 	{
@@ -390,10 +390,10 @@ int main()
 		mov_caballos_offset += 0.5f;
 
 
-		// Prueba Animaci�n Caballo Carrito
+		// Prueba Animación Caballo Carrito
 		CaballoCabeza += CaballoCabeza_offset;
 		if (CaballoCabeza >= 25.0f || CaballoCabeza <= -25.0f)
-			CaballoCabeza_offset = (CaballoCabeza_offset * (-1));
+			CaballoCabeza_offset = (CaballoCabeza_offset * (- 1));
 
 		CaballoPatasT += CaballoPatasT_offset;
 		if (CaballoPatasT >= 45.0f || CaballoPatasT <= -45.0f)
@@ -402,7 +402,7 @@ int main()
 		CaballoPatasD += CaballoPatasD_offset;
 		if (CaballoPatasD >= 45.0f || CaballoPatasD <= -45.0f)
 			CaballoPatasD_offset = (CaballoPatasD_offset * (-1));
-
+			
 		CaballoTorso += 0.005f;
 
 
@@ -528,8 +528,8 @@ int main()
 		// Blending: transparencia o traslucidez
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-
+		
+		
 		// Arboles (Se dibuja aqui ya que los planos que lo conforman necesitan transparencia)
 		model = glm::mat4(1.0f);
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -562,7 +562,7 @@ int main()
 
 		// Patas Delanteras
 		model = modelaux;
-		model = glm::translate(model, glm::vec3(0.1f, -1.4f, 1.9f));
+		model = glm::translate(model, glm::vec3(0.1f, -1.4f, 1.9f ));
 		model = glm::rotate(model, glm::radians((CaballoPatasD)), glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		CaballoPatasD_M.RenderModel();
@@ -574,11 +574,11 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		CaballoCabeza_M.RenderModel();
 
-		// Ni�o montado
+		// Niño montado
 		model = modelaux;
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Ni�o_M.RenderModel();
-
+		Niño_M.RenderModel();
+		
 
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[3]->RenderMesh();
