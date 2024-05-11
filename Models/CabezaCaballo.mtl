@@ -1,7 +1,7 @@
 # Blender 4.1.1 MTL File: 'CentroComercial.blend'
 # www.blender.org
 
-newmtl Horse_body_texture.004
+newmtl Horse_body_texture
 Ns 200.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
@@ -11,7 +11,7 @@ d 1.000000
 illum 2
 map_Kd Horse texture.tga
 
-newmtl Mane_and_tail_texture.002
+newmtl Mane_and_tail_texture
 Ns 200.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
@@ -21,7 +21,7 @@ illum 2
 map_Kd Mane and tail texture.png
 map_d Mane and tail texture.png
 
-newmtl eye_textures.001
+newmtl eye_textures
 Ns 136.815155
 Ka 0.675325 0.675325 0.675325
 Kd 0.011000 0.007097 0.005082
