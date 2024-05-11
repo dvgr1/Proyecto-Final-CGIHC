@@ -1,8 +1,8 @@
-/*
-	Proyecto Final Computo Grafico e Interacción Humano Computadora
-	Profesor: Arturo 
-	Grupo:
-	Integrantes: 
+ï»¿/*
+	Proyecto Final Computo Grafico e Interacciï¿½n Humano Computadora
+	Profesor: Arturo PÃ©rez de la Cruz
+	Grupo: 1
+	Integrantes:
 				Gonzalez Romero Daniel Vicente - 317071201
 				Hernandez Lara Jesus Eduardo - 316143671
 
@@ -35,7 +35,7 @@
 #include "Model.h"
 #include "Skybox.h"
 
-//para iluminación
+//para iluminaciï¿½n
 #include "CommonValues.h"
 #include "DirectionalLight.h"
 #include "PointLight.h"
@@ -69,34 +69,31 @@ Model MesaSillas_M;
 Model Sombrillas_M;
 Model Sillon_M;
 Model Arboles_M;
-<<<<<<< HEAD
-Model Licoreria_M;
-=======
->>>>>>> 56348acb17d1ead9e4ecabfe1dda4d061d03f39e
 Model CaballoTorso_M;
 Model CaballoPatasT_M;
 Model CaballoPatasD_M;
 Model CaballoCabeza_M;
-Model NiñoPrueba_M;
+Model Niï¿½o_M;
+Model Licoreria_M;
 
-<<<<<<< HEAD
-//variables para animacion
-=======
 
 
 // Variables para animacion
->>>>>>> 56348acb17d1ead9e4ecabfe1dda4d061d03f39e
 float giro_carrusel;
 float giro_carrusel_offset;
 
 float mov_caballos;
 float mov_caballos_offset;
 
-float pruebaCaballo;
-<<<<<<< HEAD
-=======
+float CaballoTorso;
+float CaballoTorso_offset;
+float CaballoPatasT;
+float CaballoPatasT_offset;
+float CaballoPatasD;
+float CaballoPatasD_offset;
+float CaballoCabeza;
+float CaballoCabeza_offset;
 
->>>>>>> 56348acb17d1ead9e4ecabfe1dda4d061d03f39e
 
 Skybox skybox;
 
@@ -124,7 +121,7 @@ static const char* vShader = "shaders/shader_light.vert";
 static const char* fShader = "shaders/shader_light.frag";
 
 
-//función de calculo de normales por promedio de vértices 
+//funciï¿½n de calculo de normales por promedio de vï¿½rtices 
 void calcAverageNormals(unsigned int* indices, unsigned int indiceCount, GLfloat* vertices, unsigned int verticeCount,
 	unsigned int vLength, unsigned int normalOffset)
 {
@@ -203,16 +200,16 @@ void CreateObjects()
 
 
 	};
-	
-	Mesh *obj1 = new Mesh();
+
+	Mesh* obj1 = new Mesh();
 	obj1->CreateMesh(vertices, indices, 32, 12);
 	meshList.push_back(obj1);
 
-	Mesh *obj2 = new Mesh();
+	Mesh* obj2 = new Mesh();
 	obj2->CreateMesh(vertices, indices, 32, 12);
 	meshList.push_back(obj2);
 
-	Mesh *obj3 = new Mesh();
+	Mesh* obj3 = new Mesh();
 	obj3->CreateMesh(floorVertices, floorIndices, 32, 6);
 	meshList.push_back(obj3);
 
@@ -229,7 +226,7 @@ void CreateObjects()
 
 void CreateShaders()
 {
-	Shader *shader1 = new Shader();
+	Shader* shader1 = new Shader();
 	shader1->CreateFromFiles(vShader, fShader);
 	shaderList.push_back(*shader1);
 }
@@ -247,8 +244,11 @@ int main()
 
 	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.3f, 0.5f);
 
+
 	pisoTexture = Texture("Textures/piso.tga");
 	pisoTexture.LoadTextureA();
+
+
 
 	Poste_M = Model();
 	//Poste_M.LoadModel("Models/lamp.obj");
@@ -260,10 +260,16 @@ int main()
 	//BaseCarrusel_M.LoadModel("Models/base_carrusel.obj");
 	Caballos_M = Model();
 	//Caballos_M.LoadModel("Models/caballos.obj");
+
+		//Modelos ambientacion general
 	Planta_M = Model();
-	Planta_M.LoadModel("Models/plantas.obj"); // Cubo en el origen para referencia
+	Planta_M.LoadModel("Models/plantas.obj"); // Con Cubo en el origen para referencia
 	Banca_M = Model();
 	Banca_M.LoadModel("Models/bancas.obj");
+	Arboles_M = Model();
+	Arboles_M.LoadModel("Models/Arboles.obj");
+
+	//Modelos Tienda 1
 	CoffeeShop_M = Model();
 	CoffeeShop_M.LoadModel("Models/coffe_shop.obj");
 	MesaBancos_M = Model();
@@ -272,15 +278,14 @@ int main()
 	MesaSillas_M.LoadModel("Models/mesa_sillas.obj");
 	Sombrillas_M = Model();
 	Sombrillas_M.LoadModel("Models/sombrillas.obj");
-	Arboles_M = Model();
-	Arboles_M.LoadModel("Models/Arboles.obj");
 	Sillon_M = Model();
 	Sillon_M.LoadModel("Models/sofa_cafe.obj");
-<<<<<<< HEAD
+
+	//Modelos Tienda 2
 	Licoreria_M = Model();
 	Licoreria_M.LoadModel("Models/licoreria.obj");
-=======
->>>>>>> 56348acb17d1ead9e4ecabfe1dda4d061d03f39e
+
+	// Modelos Caballo 
 	CaballoTorso_M = Model();
 	CaballoTorso_M.LoadModel("Models/TorsoCaballo.obj");
 	CaballoPatasT_M = Model();
@@ -289,9 +294,9 @@ int main()
 	CaballoPatasD_M.LoadModel("Models/PatasDelanterasC.obj");
 	CaballoCabeza_M = Model();
 	CaballoCabeza_M.LoadModel("Models/CabezaCaballo.obj");
-	NiñoPrueba_M = Model();
-	NiñoPrueba_M.LoadModel("Models/NiñoPrueba.obj");
-	
+	Niï¿½o_M = Model();
+	Niï¿½o_M.LoadModel("Models/Niï¿½o.obj");
+
 
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
@@ -307,14 +312,14 @@ int main()
 	Material_opaco = Material(0.3f, 4);
 
 
-	//luz direccional, sólo 1 y siempre debe de existir
+	//luz direccional, sï¿½lo 1 y siempre debe de existir
 	mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
 		0.7f, 0.0f,
 		0.0f, 0.0f, -1.0f);
 
 	//contador de luces puntuales
 	unsigned int pointLightCount = 0;
-	//Declaración de primer luz puntual
+	//Declaraciï¿½n de primer luz puntual
 	pointLights[0] = PointLight(1.0f, 1.0f, 1.0f,
 		1.0f, 1.0f,
 		0.0f, 3.0f, 4.0f,
@@ -326,7 +331,7 @@ int main()
 		0.0f, 2.15f, 9.5f,
 		0.1f, 0.1f, 0.1f);
 	/*pointLightCount++;*/
-	//no agregamos una nueva pointLigth, ya que el segundo arreglo tiene el mismo tamaño
+	//no agregamos una nueva pointLigth, ya que el segundo arreglo tiene el mismo tamaï¿½o
 
 
 
@@ -341,15 +346,15 @@ int main()
 	spotLightCount++;
 
 	//luz fija
-	
 
-	
+
+
 	GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePosition = 0,
 		uniformSpecularIntensity = 0, uniformShininess = 0;
 	GLuint uniformColor = 0;
 	glm::mat4 projection = glm::perspective(45.0f, (GLfloat)mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 1000.0f);
-	
-	
+
+
 	//Loop mientras no se cierra la ventana
 
 	// Variables de animacion
@@ -357,7 +362,17 @@ int main()
 	giro_carrusel_offset = 10.0f;
 	mov_caballos = 0.0f;
 	mov_caballos_offset = 10.0f;
-	pruebaCaballo = 0.0f;
+
+	CaballoTorso = 0.0f;
+	CaballoTorso_offset = 0.005f;
+	CaballoPatasT = 0.0f;
+	CaballoPatasT_offset = -0.05f;
+	CaballoPatasD = 0.0f;
+	CaballoPatasD_offset = 0.05f;
+	CaballoCabeza = 0.0f;
+	CaballoCabeza_offset = 0.09f;
+
+
 
 	while (!mainWindow.getShouldClose())
 	{
@@ -367,17 +382,32 @@ int main()
 		lastTime = now;
 
 
-		//Animación caballos carrusel 
+		//Animaciï¿½n caballos carrusel 
 		if (mov_caballos_offset > 360)
 			mov_caballos_offset = 10.5f;
 
-		giro_carrusel += 0.02*giro_carrusel_offset * deltaTime;
+		giro_carrusel += 0.02 * giro_carrusel_offset * deltaTime;
 		mov_caballos_offset += 0.5f;
 
-		pruebaCaballo += 0.005f;
+
+		// Prueba Animaciï¿½n Caballo Carrito
+		CaballoCabeza += CaballoCabeza_offset;
+		if (CaballoCabeza >= 25.0f || CaballoCabeza <= -25.0f)
+			CaballoCabeza_offset = (CaballoCabeza_offset * (-1));
+
+		CaballoPatasT += CaballoPatasT_offset;
+		if (CaballoPatasT >= 45.0f || CaballoPatasT <= -45.0f)
+			CaballoPatasT_offset = (CaballoPatasT_offset * (-1));
+
+		CaballoPatasD += CaballoPatasD_offset;
+		if (CaballoPatasD >= 45.0f || CaballoPatasD <= -45.0f)
+			CaballoPatasD_offset = (CaballoPatasD_offset * (-1));
+
+		CaballoTorso += 0.005f;
 
 
-		pruebaCaballo += 0.005f;
+
+
 		//Recibir eventos del usuario
 		glfwPollEvents();
 		camera.keyControl(mainWindow.getsKeys(), deltaTime);
@@ -397,8 +427,8 @@ int main()
 		uniformView = shaderList[0].GetViewLocation();
 		uniformEyePosition = shaderList[0].GetEyePositionLocation();
 		uniformColor = shaderList[0].getColorLocation();
-		
-		//información en el shader de intensidad especular y brillo
+
+		//informaciï¿½n en el shader de intensidad especular y brillo
 		uniformSpecularIntensity = shaderList[0].GetSpecularIntensityLocation();
 		uniformShininess = shaderList[0].GetShininessLocation();
 
@@ -406,15 +436,15 @@ int main()
 		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
 		glUniform3f(uniformEyePosition, camera.getCameraPosition().x, camera.getCameraPosition().y, camera.getCameraPosition().z);
 
-		// luz ligada a la cámara de tipo flash
+		// luz ligada a la cï¿½mara de tipo flash
 		glm::vec3 lowerLight = camera.getCameraPosition();
 		lowerLight.y -= 0.3f;
 		spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
 
 		shaderList[0].SetSpotLights(spotLights, spotLightCount);
 		shaderList[0].SetDirectionalLight(&mainLight);	// Luz ambiental
-		
-		
+
+
 		// Matrices de transformaciones
 		glm::mat4 model(1.0);
 		glm::mat4 modelaux(1.0);
@@ -432,7 +462,7 @@ int main()
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
 		meshList[2]->RenderMesh();
-		
+
 
 
 		// Base Carrusel
@@ -446,7 +476,7 @@ int main()
 
 		// Caballos Carrusel
 		model = modelAux_Carrusel;
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f + glm::radians(100*sin(mov_caballos_offset*0.008)), 0.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f + glm::radians(100 * sin(mov_caballos_offset * 0.008)), 0.0f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//Caballos_M.RenderModel();
@@ -458,7 +488,7 @@ int main()
 
 		//Bancas
 		Banca_M.RenderModel();
-		
+
 
 		//Coffee shop
 		model = glm::mat4(1.0f);
@@ -470,9 +500,9 @@ int main()
 		//Mesas afuera
 		//model = glm::mat4(1.0f);
 		Sombrillas_M.RenderModel();
-		//Mesas dentro de la cafetería
+		//Mesas dentro de la cafeterï¿½a
 		MesaSillas_M.RenderModel();
-		//Sillón de la cafetería
+		//Sillï¿½n de la cafeterï¿½a
 		Sillon_M.RenderModel();
 
 
@@ -487,73 +517,68 @@ int main()
 		model = glm::translate(model, glm::vec3(55.0f, 0.0f, -8.0f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Puerta_M.RenderModel();
+		//Puerta_M.RenderModel();
 		spotLights[1].SetPos(glm::vec3(45.0f, 13.0f, -8.0f));
 
 
-		
 
-		
-		
+
+
+
 		// Blending: transparencia o traslucidez
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		
+
+
 		// Arboles (Se dibuja aqui ya que los planos que lo conforman necesitan transparencia)
-		
 		model = glm::mat4(1.0f);
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Arboles_M.RenderModel();
-<<<<<<< HEAD
-	
-		//licoreria
+
+
+		//Licoreria
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(50.0f, 0.0f, -150.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Licoreria_M.RenderModel();
 
 
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, (0.0f + pruebaCaballo)));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		CaballoTorso_M.RenderModel();
-
-		// Patas Traseras
-		CaballoPatasT_M.RenderModel();
-
-		// Patas Delanteras
-		CaballoPatasD_M.RenderModel();
-
-		// Cabeza
-		CaballoCabeza_M.RenderModel();
-
-		// Niño montado de prueba falta texturizar
-		NiñoPrueba_M.RenderModel();
-
-=======
->>>>>>> 56348acb17d1ead9e4ecabfe1dda4d061d03f39e
-
 
 		// Caballo
 
 		// Torso
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, (0.0f + pruebaCaballo)));
+		modelaux = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(170.0f, 6.2f, (-170.0f + CaballoTorso)));
+		modelaux = model;
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		CaballoTorso_M.RenderModel();
 
 		// Patas Traseras
+		model = glm::translate(model, glm::vec3(0.0f, -0.6f, -3.2f));
+		model = glm::rotate(model, glm::radians(CaballoPatasT), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		CaballoPatasT_M.RenderModel();
 
 		// Patas Delanteras
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(0.1f, -1.4f, 1.9f));
+		model = glm::rotate(model, glm::radians((CaballoPatasD)), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		CaballoPatasD_M.RenderModel();
 
 		// Cabeza
+		model = modelaux;
+		model = glm::rotate(model, glm::radians(CaballoCabeza), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(0.1f, 1.35f, 2.95f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		CaballoCabeza_M.RenderModel();
 
-		// Niño montado de prueba falta texturizar
-		NiñoPrueba_M.RenderModel();
-		
+		// Niï¿½o montado
+		model = modelaux;
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Niï¿½o_M.RenderModel();
+
 
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[3]->RenderMesh();
