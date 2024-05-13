@@ -6,6 +6,8 @@
 				Gonzalez Romero Daniel Vicente - 317071201
 				Hernandez Lara Jesus Eduardo - 316143671
 
+	Version 1.3
+
 */
 
 //para cargar imagen
@@ -80,6 +82,12 @@ Model PandaPataTI_M;
 Model PandaPataTD_M;
 Model PandaCabeza_M;
 Model TiendaRopa_M;
+Model Lamparas_M;
+Model BotesBasura_M;
+Model Baños_M;
+Model MaquinasRefresco_M;
+Model AnimalesCarrito_M;
+Model ParedesTienda3_M;
 
 
 // Variables para animacion
@@ -262,7 +270,7 @@ int main()
 
 
 
-	
+		//Modelos Carrusel
 	BaseCarrusel_M = Model();
 	BaseCarrusel_M.LoadModel("Models/base_carrusel.obj");
 	Caballos_M = Model();
@@ -270,11 +278,22 @@ int main()
 
 		//Modelos ambientacion general
 	Planta_M = Model();
-	Planta_M.LoadModel("Models/plantas.obj"); // Con Cubo en el origen para referencia
+	Planta_M.LoadModel("Models/plantas.obj"); 
 	Banca_M = Model();
 	Banca_M.LoadModel("Models/bancas.obj");
 	Arboles_M = Model();
 	Arboles_M.LoadModel("Models/Arboles.obj");
+	Lamparas_M = Model();
+	Lamparas_M.LoadModel("Models/Lamparas.obj");
+	BotesBasura_M = Model();
+	BotesBasura_M.LoadModel("Models/BotesBasura.obj");
+	Baños_M = Model();
+	Baños_M.LoadModel("Models/Baños.obj");
+	MaquinasRefresco_M = Model();
+	MaquinasRefresco_M.LoadModel("Models/MaquinasRefresco.obj");
+	AnimalesCarrito_M = Model();
+	AnimalesCarrito_M.LoadModel("Models/AnimalesCarrito.obj");
+
 
 		//Modelos Tienda 1
 	CoffeeShop_M = Model();
@@ -292,9 +311,11 @@ int main()
 	Licoreria_M = Model();
 	Licoreria_M.LoadModel("Models/licoreria.obj");
 
-		//Modelos tienda 3
+		//Modelos Tienda 3
 	TiendaRopa_M = Model();
 	TiendaRopa_M.LoadModel("Models/shop.obj");
+	ParedesTienda3_M = Model();
+	ParedesTienda3_M.LoadModel("Models/ParedesTienda3.obj");
 
 		// Modelos Caballo 
 	CaballoTorso_M = Model();
@@ -504,7 +525,7 @@ int main()
 		// Piso
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, -0.2f, 0.0f));
-		model = glm::scale(model, glm::vec3(30.0f, 1.0f, 30.0f));
+		model = glm::scale(model, glm::vec3(40.0f, 1.0f, 40.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		pisoTexture.UseTexture();
@@ -538,6 +559,18 @@ int main()
 		//Bancas
 		Banca_M.RenderModel();
 
+		// Botes Basura
+		BotesBasura_M.RenderModel();
+
+		//Baños
+		Baños_M.RenderModel();
+
+		//Animales de Carrito
+		AnimalesCarrito_M.RenderModel();
+
+		//Maquinas de Refresco
+		MaquinasRefresco_M.RenderModel();
+
 
 		//Coffee shop
 		model = glm::mat4(1.0f);
@@ -554,13 +587,6 @@ int main()
 		MesaSillas_M.RenderModel();
 		//Sill�n de la cafeter�a
 
-		
-		//Mesas dentro de la cafeter�a
-		MesaSillas_M.RenderModel();
-		
-		//Sill�n de la cafeter�a
-
-		Sillon_M.RenderModel();
 
 
 
@@ -629,7 +655,6 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Niño_M.RenderModel();
 
-		
 
 
 
@@ -644,6 +669,8 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Arboles_M.RenderModel();
 
+		//Lamparas
+		Lamparas_M.RenderModel();
 
 		//Licoreria
 		model = glm::mat4(1.0f);
@@ -654,11 +681,17 @@ int main()
 		//Tienda de ropa
 		//Tienda de ropa
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-100.0f, -10.0f, -40.0f));
+		model = glm::translate(model, glm::vec3(-100.0f, -6.5f, -40.0f));
+		modelaux = model;
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		TiendaRopa_M.RenderModel();
+
+		model = modelaux;
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		ParedesTienda3_M.RenderModel();
+
 
 		// Caballo
 
