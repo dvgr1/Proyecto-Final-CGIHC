@@ -55,9 +55,7 @@ Texture pisoTexture;
 
 
 //Modelos 
-Model Poste_M;
-Model Puerta_M;
-Model Luciernaga_M;
+
 Model BaseCarrusel_M;
 Model Caballos_M;
 Model Planta_M;
@@ -264,16 +262,11 @@ int main()
 
 
 
-	Poste_M = Model();
-	//Poste_M.LoadModel("Models/lamp.obj");
-	Puerta_M = Model();
-	//Puerta_M.LoadModel("Models/puerta_previo.obj");
-	Luciernaga_M = Model();
-	//Luciernaga_M.LoadModel("Models/luciernaga.obj");
+	
 	BaseCarrusel_M = Model();
-	//BaseCarrusel_M.LoadModel("Models/base_carrusel.obj");
+	BaseCarrusel_M.LoadModel("Models/base_carrusel.obj");
 	Caballos_M = Model();
-	//Caballos_M.LoadModel("Models/caballos.obj");
+	Caballos_M.LoadModel("Models/caballos.obj");
 
 		//Modelos ambientacion general
 	Planta_M = Model();
@@ -523,19 +516,19 @@ int main()
 
 		// Base Carrusel
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.0f, 2.15f, 2.0f));
+		model = glm::translate(model, glm::vec3(250.0f, -5.0f, 2.0f));
 		model = glm::rotate(model, glm::radians(giro_carrusel), glm::vec3(0.0f, 1.0f, 0.0f));
 		modelAux_Carrusel = model;
-		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
+		//model = glm::scale(model, glm::vec3(0.f, 0.3f, 0.3f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//BaseCarrusel_M.RenderModel();
+		BaseCarrusel_M.RenderModel();
 
 		// Caballos Carrusel
 		model = modelAux_Carrusel;
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f + glm::radians(100 * sin(mov_caballos_offset * 0.008)), 0.0f));
-		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f + glm::radians(100 * sin(mov_caballos_offset * 0.005)), 0.0f));
+		//model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Caballos_M.RenderModel();
+		Caballos_M.RenderModel();
 
 		//Plantas
 		model = glm::mat4(1.0f);
