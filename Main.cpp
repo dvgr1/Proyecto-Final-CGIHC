@@ -75,7 +75,13 @@ Model CaballoPatasD_M;
 Model CaballoCabeza_M;
 Model Niño_M;
 Model Licoreria_M;
-
+Model PandaTorso_M;
+Model PandaPataDI_M;
+Model PandaPataDD_M;
+Model PandaPataTI_M;
+Model PandaPataTD_M;
+Model PandaCabeza_M;
+Model TiendaRopa_M;
 
 
 // Variables para animacion
@@ -93,6 +99,14 @@ float CaballoPatasD;
 float CaballoPatasD_offset;
 float CaballoCabeza;
 float CaballoCabeza_offset;
+
+float PandaTorso;
+float PandaTorso_offset;
+float PandaRotarPatas;
+float PandaRotarPatas_offset;
+float PandaCabeza;
+float PandaCabeza_offset;
+
 
 
 Skybox skybox;
@@ -285,6 +299,10 @@ int main()
 	Licoreria_M = Model();
 	Licoreria_M.LoadModel("Models/licoreria.obj");
 
+		//Modelos tienda 3
+	TiendaRopa_M = Model();
+	TiendaRopa_M.LoadModel("Models/shop.obj");
+
 		// Modelos Caballo 
 	CaballoTorso_M = Model();
 	CaballoTorso_M.LoadModel("Models/TorsoCaballo.obj");
@@ -294,17 +312,35 @@ int main()
 	CaballoPatasD_M.LoadModel("Models/PatasDelanterasC.obj");
 	CaballoCabeza_M = Model();
 	CaballoCabeza_M.LoadModel("Models/CabezaCaballo.obj");
+
 	Niño_M = Model();
 	Niño_M.LoadModel("Models/Niño.obj");
+
+
+
+		// Modelos Panda
+	PandaTorso_M = Model();
+	PandaTorso_M.LoadModel("Models/Panda/TorsoPanda.obj");
+	PandaPataDD_M = Model();
+	PandaPataDD_M.LoadModel("Models/Panda/PataDelanteraDP.obj");
+	PandaPataDI_M = Model();
+	PandaPataDI_M.LoadModel("Models/Panda/PataDelanteraIP.obj");
+	PandaPataTD_M = Model();
+	PandaPataTD_M.LoadModel("Models/Panda/PataTraseraDP.obj");
+	PandaPataTI_M = Model();
+	PandaPataTI_M.LoadModel("Models/Panda/PataTraseraIP.obj");
+	PandaCabeza_M = Model();
+	PandaCabeza_M.LoadModel("Models/Panda/CabezaPanda.obj");
+
 	
 
 	std::vector<std::string> skyboxFaces;
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_lf.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_dn.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_up.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_bk.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_ft.tga");
+	skyboxFaces.push_back("Textures/Skybox/city_rt.tga");
+	skyboxFaces.push_back("Textures/Skybox/city_lf.tga");
+	skyboxFaces.push_back("Textures/Skybox/city_dn.tga");
+	skyboxFaces.push_back("Textures/Skybox/city_up.tga");
+	skyboxFaces.push_back("Textures/Skybox/city_bk.tga");
+	skyboxFaces.push_back("Textures/Skybox/city_ft.tga");
 
 	skybox = Skybox(skyboxFaces);
 
@@ -370,7 +406,15 @@ int main()
 	CaballoPatasD = 0.0f;
 	CaballoPatasD_offset = 0.05f;
 	CaballoCabeza = 0.0f;
-	CaballoCabeza_offset = 0.09f;
+	CaballoCabeza_offset = 0.05f;
+
+	PandaTorso = 0.0f;
+	PandaTorso_offset = 0.004f;
+	PandaRotarPatas = 0.0f;
+	PandaRotarPatas_offset = 0.05f;
+	PandaCabeza = 0.0f;
+	PandaCabeza_offset = 0.05f;
+
 	
 	
 
@@ -403,7 +447,19 @@ int main()
 		if (CaballoPatasD >= 45.0f || CaballoPatasD <= -45.0f)
 			CaballoPatasD_offset = (CaballoPatasD_offset * (-1));
 			
-		CaballoTorso += 0.005f;
+		CaballoTorso += 0.006f;
+
+
+		// Prueba Animacion Panda carrito
+		PandaCabeza += PandaCabeza_offset;
+		if (PandaCabeza >= 35.0f || PandaCabeza <= -35.0f)
+			PandaCabeza_offset = (PandaCabeza_offset * (-1));
+
+		PandaRotarPatas += PandaRotarPatas_offset;
+		if (PandaRotarPatas >= 35.0f || PandaRotarPatas <= -35.0f)
+			PandaRotarPatas_offset = (PandaRotarPatas_offset * (-1));
+
+		PandaTorso += 0.004f;
 
 
 
@@ -500,9 +556,17 @@ int main()
 		//Mesas afuera
 		//model = glm::mat4(1.0f);
 		Sombrillas_M.RenderModel();
+
 		//Mesas dentro de la cafeter�a
 		MesaSillas_M.RenderModel();
 		//Sill�n de la cafeter�a
+
+		
+		//Mesas dentro de la cafeter�a
+		MesaSillas_M.RenderModel();
+		
+		//Sill�n de la cafeter�a
+
 		Sillon_M.RenderModel();
 
 
@@ -521,6 +585,58 @@ int main()
 		spotLights[1].SetPos(glm::vec3(45.0f, 13.0f, -8.0f));
 
 
+
+
+		// Panda
+
+			//Torso
+		model = glm::mat4(1.0f);
+		modelaux = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(190.0f, 4.0f, (PandaTorso - 190.0f)));
+		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
+		modelaux = model;
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		PandaTorso_M.RenderModel();
+
+			//Patas Traseras
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(0.05f, -0.17f, -0.55f));
+		model = glm::rotate(model, glm::radians(PandaRotarPatas), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		PandaPataTI_M.RenderModel();
+
+		model = glm::translate(model, glm::vec3(-0.39f, 0.0f, -0.08f));
+		model = glm::rotate(model, glm::radians(PandaRotarPatas*(-1)+5), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		PandaPataTD_M.RenderModel();
+
+			//Patas Delanteras
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(0.34f, -0.3f, 0.53f));
+		model = glm::rotate(model, glm::radians(PandaRotarPatas), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		PandaPataDI_M.RenderModel();
+
+		model = glm::translate(model, glm::vec3(-0.6f, -0.04f, -0.13f));
+		model = glm::rotate(model, glm::radians(PandaRotarPatas*(-1)+5), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		PandaPataDD_M.RenderModel();
+
+			// Cabeza
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.8f));
+		model = glm::rotate(model, glm::radians(PandaCabeza), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		PandaCabeza_M.RenderModel();
+
+			// Ni�o montado
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(0.0f, 0.126f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.35f, 0.25f, 0.25f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Niño_M.RenderModel();
+
+		
 
 
 
@@ -542,7 +658,14 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Licoreria_M.RenderModel();
 
-
+		//Tienda de ropa
+		//Tienda de ropa
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-100.0f, -10.0f, -40.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		TiendaRopa_M.RenderModel();
 
 		// Caballo
 
