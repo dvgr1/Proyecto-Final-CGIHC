@@ -1,37 +1,5 @@
-# Blender 4.1.1 MTL File: 'None'
+# Blender 4.1.1 MTL File: 'CentroComercial.blend'
 # www.blender.org
-
-newmtl Material.001
-Ns 41.838863
-Ka 1.000000 1.000000 1.000000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Kd Planta/soil diffuse.jpg
-
-newmtl Material.002
-Ns 0.000000
-Ka 1.000000 1.000000 1.000000
-Ks 1.000000 1.000000 1.000000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Kd Planta/pot diffuse.png
-map_Bump -bm 0.300000 Planta/pot normal.png
-
-newmtl Material.003
-Ns 502.809967
-Ka 1.000000 1.000000 1.000000
-Ks 1.000000 1.000000 1.000000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Kd Planta/Untitled.png
-map_Bump -bm 0.200000 Planta/normal.png
 
 newmtl Material.004
 Ns 0.000000
@@ -41,8 +9,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/pot diffuse.png
-map_Bump -bm 0.300000 Planta/pot normal.png
+map_Kd pot diffuse.png
+map_Bump -bm 0.300000 pot normal.png
 
 newmtl Material.005
 Ns 41.838863
@@ -52,7 +20,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/soil diffuse.jpg
+map_Kd soil diffuse.jpg
 
 newmtl Material.006
 Ns 502.809967
@@ -62,8 +30,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/Untitled.png
-map_Bump -bm 0.200000 Planta/normal.png
+map_Kd Untitled.png
+map_Bump -bm 0.200000 normal.png
 
 newmtl Material.007
 Ns 0.000000
@@ -73,8 +41,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/pot diffuse.png
-map_Bump -bm 0.300000 Planta/pot normal.png
+map_Kd pot diffuse.png
+map_Bump -bm 0.300000 pot normal.png
 
 newmtl Material.008
 Ns 41.838863
@@ -84,7 +52,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/soil diffuse.jpg
+map_Kd soil diffuse.jpg
 
 newmtl Material.009
 Ns 502.809967
@@ -94,8 +62,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/Untitled.png
-map_Bump -bm 0.200000 Planta/normal.png
+map_Kd Untitled.png
+map_Bump -bm 0.200000 normal.png
 
 newmtl Material.010
 Ns 0.000000
@@ -105,8 +73,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/pot diffuse.png
-map_Bump -bm 0.300000 Planta/pot normal.png
+map_Kd pot diffuse.png
+map_Bump -bm 0.300000 pot normal.png
 
 newmtl Material.011
 Ns 41.838863
@@ -116,7 +84,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/soil diffuse.jpg
+map_Kd soil diffuse.jpg
 
 newmtl Material.012
 Ns 502.809967
@@ -126,7 +94,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/Untitled.png
+map_Kd Untitled.png
 map_Bump -bm 0.200000 Planta/normal.png
 
 newmtl Material.013
@@ -137,8 +105,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/pot diffuse.png
-map_Bump -bm 0.300000 Planta/pot normal.png
+map_Kd pot diffuse.png
+map_Bump -bm 0.300000 pot normal.png
 
 newmtl Material.014
 Ns 41.838863
@@ -148,7 +116,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/soil diffuse.jpg
+map_Kd soil diffuse.jpg
 
 newmtl Material.015
 Ns 502.809967
@@ -158,8 +126,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/Untitled.png
-map_Bump -bm 0.200000 Planta/normal.png
+map_Kd Untitled.png
+map_Bump -bm 0.200000 normal.png
 
 newmtl Material.016
 Ns 0.000000
@@ -169,8 +137,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/pot diffuse.png
-map_Bump -bm 0.300000 Planta/pot normal.png
+map_Kd pot diffuse.png
+map_Bump -bm 0.300000 pot normal.png
 
 newmtl Material.017
 Ns 41.838863
@@ -180,7 +148,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/soil diffuse.jpg
+map_Kd soil diffuse.jpg
 
 newmtl Material.018
 Ns 502.809967
@@ -190,8 +158,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/Untitled.png
-map_Bump -bm 0.200000 Planta/normal.png
+map_Kd Untitled.png
+map_Bump -bm 0.200000 normal.png
 
 newmtl Material.019
 Ns 0.000000
@@ -201,8 +169,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/pot diffuse.png
-map_Bump -bm 0.300000 Planta/pot normal.png
+map_Kd pot diffuse.png
+map_Bump -bm 0.300000 pot normal.png
 
 newmtl Material.020
 Ns 41.838863
@@ -212,7 +180,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/soil diffuse.jpg
+map_Kd soil diffuse.jpg
 
 newmtl Material.021
 Ns 502.809967
@@ -222,8 +190,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/Untitled.png
-map_Bump -bm 0.200000 Planta/normal.png
+map_Kd Untitled.png
+map_Bump -bm 0.200000 normal.png
 
 newmtl Material.022
 Ns 0.000000
@@ -233,8 +201,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/pot diffuse.png
-map_Bump -bm 0.300000 Planta/pot normal.png
+map_Kd pot diffuse.png
+map_Bump -bm 0.300000 pot normal.png
 
 newmtl Material.023
 Ns 41.838863
@@ -244,7 +212,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/soil diffuse.jpg
+map_Kd soil diffuse.jpg
 
 newmtl Material.024
 Ns 502.809967
@@ -254,8 +222,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/Untitled.png
-map_Bump -bm 0.200000 Planta/normal.png
+map_Kd Untitled.png
+map_Bump -bm 0.200000 normal.png
 
 newmtl Material.025
 Ns 0.000000
@@ -265,8 +233,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/pot diffuse.png
-map_Bump -bm 0.300000 Planta/pot normal.png
+map_Kd pot diffuse.png
+map_Bump -bm 0.300000 pot normal.png
 
 newmtl Material.026
 Ns 41.838863
@@ -276,7 +244,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/soil diffuse.jpg
+map_Kd soil diffuse.jpg
 
 newmtl Material.027
 Ns 502.809967
@@ -286,8 +254,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/Untitled.png
-map_Bump -bm 0.200000 Planta/normal.png
+map_Kd Untitled.png
+map_Bump -bm 0.200000 normal.png
 
 newmtl Material.028
 Ns 0.000000
@@ -297,8 +265,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/pot diffuse.png
-map_Bump -bm 0.300000 Planta/pot normal.png
+map_Kd pot diffuse.png
+map_Bump -bm 0.300000 pot normal.png
 
 newmtl Material.029
 Ns 41.838863
@@ -308,7 +276,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/soil diffuse.jpg
+map_Kd soil diffuse.jpg
 
 newmtl Material.030
 Ns 502.809967
@@ -318,8 +286,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/Untitled.png
-map_Bump -bm 0.200000 Planta/normal.png
+map_Kd Untitled.png
+map_Bump -bm 0.200000 normal.png
 
 newmtl Material.031
 Ns 0.000000
@@ -329,8 +297,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/pot diffuse.png
-map_Bump -bm 0.300000 Planta/pot normal.png
+map_Kd pot diffuse.png
+map_Bump -bm 0.300000 pot normal.png
 
 newmtl Material.032
 Ns 41.838863
@@ -340,7 +308,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/soil diffuse.jpg
+map_Kd soil diffuse.jpg
 
 newmtl Material.033
 Ns 502.809967
@@ -350,8 +318,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/Untitled.png
-map_Bump -bm 0.200000 Planta/normal.png
+map_Kd Untitled.png
+map_Bump -bm 0.200000 normal.png
 
 newmtl Material.034
 Ns 0.000000
@@ -361,8 +329,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/pot diffuse.png
-map_Bump -bm 0.300000 Planta/pot normal.png
+map_Kd pot diffuse.png
+map_Bump -bm 0.300000 pot normal.png
 
 newmtl Material.035
 Ns 41.838863
@@ -372,7 +340,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/soil diffuse.jpg
+map_Kd soil diffuse.jpg
 
 newmtl Material.036
 Ns 502.809967
@@ -382,8 +350,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/Untitled.png
-map_Bump -bm 0.200000 Planta/normal.png
+map_Kd Untitled.png
+map_Bump -bm 0.200000 normal.png
 
 newmtl Material.037
 Ns 0.000000
@@ -393,8 +361,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/pot diffuse.png
-map_Bump -bm 0.300000 Planta/pot normal.png
+map_Kd pot diffuse.png
+map_Bump -bm 0.300000 pot normal.png
 
 newmtl Material.038
 Ns 41.838863
@@ -404,7 +372,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/soil diffuse.jpg
+map_Kd soil diffuse.jpg
 
 newmtl Material.039
 Ns 502.809967
@@ -414,8 +382,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/Untitled.png
-map_Bump -bm 0.200000 Planta/normal.png
+map_Kd Untitled.png
+map_Bump -bm 0.200000 normal.png
 
 newmtl Material.040
 Ns 0.000000
@@ -425,8 +393,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/pot diffuse.png
-map_Bump -bm 0.300000 Planta/pot normal.png
+map_Kd pot diffuse.png
+map_Bump -bm 0.300000 pot normal.png
 
 newmtl Material.041
 Ns 41.838863
@@ -436,7 +404,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/soil diffuse.jpg
+map_Kd soil diffuse.jpg
 
 newmtl Material.042
 Ns 502.809967
@@ -446,8 +414,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/Untitled.png
-map_Bump -bm 0.200000 Planta/normal.png
+map_Kd Untitled.png
+map_Bump -bm 0.200000 normal.png
 
 newmtl Material.043
 Ns 0.000000
@@ -457,8 +425,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/pot diffuse.png
-map_Bump -bm 0.300000 Planta/pot normal.png
+map_Kd pot diffuse.png
+map_Bump -bm 0.300000 pot normal.png
 
 newmtl Material.044
 Ns 41.838863
@@ -468,7 +436,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/soil diffuse.jpg
+map_Kd soil diffuse.jpg
 
 newmtl Material.045
 Ns 502.809967
@@ -478,8 +446,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/Untitled.png
-map_Bump -bm 0.200000 Planta/normal.png
+map_Kd Untitled.png
+map_Bump -bm 0.200000 normal.png
 
 newmtl Material.046
 Ns 0.000000
@@ -489,8 +457,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/pot diffuse.png
-map_Bump -bm 0.300000 Planta/pot normal.png
+map_Kd pot diffuse.png
+map_Bump -bm 0.300000 pot normal.png
 
 newmtl Material.047
 Ns 41.838863
@@ -500,7 +468,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/soil diffuse.jpg
+map_Kd soil diffuse.jpg
 
 newmtl Material.048
 Ns 502.809967
@@ -510,8 +478,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/Untitled.png
-map_Bump -bm 0.200000 Planta/normal.png
+map_Kd Untitled.png
+map_Bump -bm 0.200000 normal.png
 
 newmtl Material.049
 Ns 0.000000
@@ -521,8 +489,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/pot diffuse.png
-map_Bump -bm 0.300000 Planta/pot normal.png
+map_Kd pot diffuse.png
+map_Bump -bm 0.300000 pot normal.png
 
 newmtl Material.050
 Ns 41.838863
@@ -532,7 +500,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/soil diffuse.jpg
+map_Kd soil diffuse.jpg
 
 newmtl Material.051
 Ns 502.809967
@@ -542,5 +510,5 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Planta/Untitled.png
-map_Bump -bm 0.200000 Planta/normal.png
+map_Kd Untitled.png
+map_Bump -bm 0.200000 normal.png

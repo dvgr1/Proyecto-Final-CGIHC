@@ -1,0 +1,82 @@
+# Blender 4.1.1 MTL File: 'CentroComercial.blend'
+# www.blender.org
+
+newmtl Horse_body_texture.001
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd Horse texture.tga
+
+newmtl Horse_body_texture.002
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd Horse texture.tga
+
+newmtl Mane_and_tail_texture.001
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd Mane and tail texture.png
+map_d Mane and tail texture.png
+
+newmtl Mane_and_tail_texture.002
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd Mane and tail texture.png
+map_d Mane and tail texture.png
+
+newmtl Material_0
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1000.000000
+d 1.000000
+illum 2
+map_Kd gltf_embedded_0.png
+
+newmtl Material_0.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1000.000000
+d 1.000000
+illum 2
+map_Kd gltf_embedded_0.png
+
+newmtl eye_textures.001
+Ns 136.815155
+Ka 0.675325 0.675325 0.675325
+Kd 0.011000 0.007097 0.005082
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
+
+newmtl eye_textures.002
+Ns 136.815155
+Ka 0.675325 0.675325 0.675325
+Kd 0.011000 0.007097 0.005082
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
