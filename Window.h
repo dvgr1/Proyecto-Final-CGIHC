@@ -11,6 +11,8 @@ public:
 	int Initialise();
 	GLfloat getBufferWidth() { return bufferWidth; }
 	GLfloat getBufferHeight() { return bufferHeight; }
+	GLboolean getPlayCarrusel() { return playCarrusel; }
+	GLboolean getOpenDoorSliding() { return openDoorSliding; }
 	GLfloat getXChange();
 	GLfloat getYChange();
 	bool getShouldClose() {
@@ -29,6 +31,8 @@ private:
 	GLfloat lastY;
 	GLfloat xChange;
 	GLfloat yChange;
+	GLboolean playCarrusel;
+	GLboolean openDoorSliding;
 	
 	
 	bool mouseFirstMoved;

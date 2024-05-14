@@ -121,6 +121,14 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 			//printf("se solto la tecla %d'\n", key);
 		}
 	}
+	if (key == GLFW_KEY_O)
+		theWindow->openDoorSliding = true;
+	if (key == GLFW_KEY_C) //True para abrir, false para cerrar
+		theWindow->openDoorSliding = false;
+	if (key == GLFW_KEY_P)
+		theWindow->playCarrusel = true;
+	if (key == GLFW_KEY_L) //True para iniciar la animacion, false para pararla
+		theWindow->playCarrusel = false;
 }
 
 void Window::ManejaMouse(GLFWwindow* window, double xPos, double yPos)
