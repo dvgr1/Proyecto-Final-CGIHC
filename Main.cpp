@@ -88,11 +88,16 @@ Model Baños_M;
 Model MaquinasRefresco_M;
 Model AnimalesCarrito_M;
 Model ParedesTienda3_M;
+Model PuertaIzquierda_M;
+Model PuertaDerecha_M;
 
 
 // Variables para animacion
 float giro_carrusel;
 float giro_carrusel_offset;
+
+float abre_puerta_izquierda;
+float abre_puerta_derecha;
 
 float mov_caballos;
 float mov_caballos_offset;
@@ -316,6 +321,10 @@ int main()
 	TiendaRopa_M.LoadModel("Models/shop.obj");
 	ParedesTienda3_M = Model();
 	ParedesTienda3_M.LoadModel("Models/ParedesTienda3.obj");
+	PuertaDerecha_M = Model();
+	PuertaDerecha_M.LoadModel("Models/puerta_derecha.obj");
+	PuertaIzquierda_M = Model();
+	PuertaIzquierda_M.LoadModel("Models/puerta_izquierda.obj");
 
 		// Modelos Caballo 
 	CaballoTorso_M = Model();
@@ -410,6 +419,8 @@ int main()
 	// Variables de animacion
 	giro_carrusel = 0.0f;
 	giro_carrusel_offset = 10.0f;
+	abre_puerta_derecha = 0.0f;
+	abre_puerta_izquierda = 0.0f;
 	mov_caballos = 0.0f;
 	mov_caballos_offset = 10.0f;
 
@@ -441,11 +452,13 @@ int main()
 
 
 		//Animaci�n caballos carrusel 
-		if (mov_caballos_offset > 360)
-			mov_caballos_offset = 10.5f;
+		if (mainWindow.getPlayCarrusel()) {
+			if (mov_caballos_offset > 360)
+				mov_caballos_offset = 10.5f;
 
-		giro_carrusel += 0.02 * giro_carrusel_offset * deltaTime;
-		mov_caballos_offset += 0.5f;
+			giro_carrusel += 0.02 * giro_carrusel_offset * deltaTime;
+			mov_caballos_offset += 0.5f;
+		}
 
 
 		// Prueba Animación Caballo Carrito
@@ -475,6 +488,21 @@ int main()
 
 		PandaTorso += 0.004f;
 
+		//puertas deslizantes
+		
+
+		if (mainWindow.getOpenDoorSliding()) {
+			if (abre_puerta_derecha <= 5.0f) {
+				abre_puerta_derecha += 0.1f;
+			}
+			if (abre_puerta_izquierda >= -5.0f) {
+				abre_puerta_izquierda += -0.1f;
+			}
+		}
+		else {
+			abre_puerta_derecha = 0.0f;
+			abre_puerta_izquierda = 0.0f;
+		}
 
 
 
@@ -691,8 +719,20 @@ int main()
 		model = modelaux;
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		ParedesTienda3_M.RenderModel();
-
-
+		//Puerta derecha
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(0.0f+abre_puerta_izquierda, 10.0f, 40.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.3f, 0.1f, 0.3f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		PuertaDerecha_M.RenderModel();
+		//puerta izquierda
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(0.0f + abre_puerta_derecha, 10.0f, 40.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.3f, 0.1f, 0.3f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		PuertaIzquierda_M.RenderModel();
 		// Caballo
 
 		// Torso
