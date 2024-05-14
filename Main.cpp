@@ -6,7 +6,7 @@
 				Gonzalez Romero Daniel Vicente - 317071201
 				Hernandez Lara Jesus Eduardo - 316143671
 
-	Version 1.3
+	Version 1.4
 
 */
 
@@ -60,7 +60,6 @@ Texture pisoTexture;
 
 Model BaseCarrusel_M;
 Model Caballos_M;
-Model Planta_M;
 Model Banca_M;
 Model Personaje_M;
 Model CoffeeShop_M;
@@ -282,8 +281,6 @@ int main()
 	Caballos_M.LoadModel("Models/caballos.obj");
 
 		//Modelos ambientacion general
-	Planta_M = Model();
-	Planta_M.LoadModel("Models/plantas.obj"); 
 	Banca_M = Model();
 	Banca_M.LoadModel("Models/bancas.obj");
 	Arboles_M = Model();
@@ -425,20 +422,20 @@ int main()
 	mov_caballos_offset = 10.0f;
 
 	CaballoTorso = 0.0f;
-	CaballoTorso_offset = 0.005f;
+	CaballoTorso_offset = 0.05f;
 	CaballoPatasT = 0.0f;
-	CaballoPatasT_offset = -0.05f;
+	CaballoPatasT_offset = -0.09f;
 	CaballoPatasD = 0.0f;
-	CaballoPatasD_offset = 0.05f;
+	CaballoPatasD_offset = 0.09f;
 	CaballoCabeza = 0.0f;
-	CaballoCabeza_offset = 0.05f;
+	CaballoCabeza_offset = 0.09f;
 
 	PandaTorso = 0.0f;
-	PandaTorso_offset = 0.004f;
+	PandaTorso_offset = 0.04f;
 	PandaRotarPatas = 0.0f;
-	PandaRotarPatas_offset = 0.05f;
+	PandaRotarPatas_offset = 0.09f;
 	PandaCabeza = 0.0f;
-	PandaCabeza_offset = 0.05f;
+	PandaCabeza_offset = 0.09f;
 
 	
 	
@@ -474,28 +471,31 @@ int main()
 		if (CaballoPatasD >= 45.0f || CaballoPatasD <= -45.0f)
 			CaballoPatasD_offset = (CaballoPatasD_offset * (-1));
 			
-		CaballoTorso += 0.006f;
+		CaballoTorso += CaballoTorso_offset;
 
 
 		// Prueba Animacion Panda carrito
-		PandaCabeza += PandaCabeza_offset;
-		if (PandaCabeza >= 35.0f || PandaCabeza <= -35.0f)
-			PandaCabeza_offset = (PandaCabeza_offset * (-1));
+		if (mainWindow.getActivarPanda())
+		{
+			PandaCabeza += PandaCabeza_offset;
+			if (PandaCabeza >= 35.0f || PandaCabeza <= -35.0f)
+				PandaCabeza_offset = (PandaCabeza_offset * (-1));
 
-		PandaRotarPatas += PandaRotarPatas_offset;
-		if (PandaRotarPatas >= 35.0f || PandaRotarPatas <= -35.0f)
-			PandaRotarPatas_offset = (PandaRotarPatas_offset * (-1));
+			PandaRotarPatas += PandaRotarPatas_offset;
+			if (PandaRotarPatas >= 35.0f || PandaRotarPatas <= -35.0f)
+				PandaRotarPatas_offset = (PandaRotarPatas_offset * (-1));
 
-		PandaTorso += 0.004f;
+			PandaTorso += PandaTorso_offset;
+		}
 
 		//puertas deslizantes
 		
 
 		if (mainWindow.getOpenDoorSliding()) {
-			if (abre_puerta_derecha <= 5.0f) {
+			if (abre_puerta_derecha <= 35.0f) {
 				abre_puerta_derecha += 0.1f;
 			}
-			if (abre_puerta_izquierda >= -5.0f) {
+			if (abre_puerta_izquierda >= -35.0f) {
 				abre_puerta_izquierda += -0.1f;
 			}
 		}
@@ -553,7 +553,7 @@ int main()
 		// Piso
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, -0.2f, 0.0f));
-		model = glm::scale(model, glm::vec3(40.0f, 1.0f, 40.0f));
+		model = glm::scale(model, glm::vec3(40.0f, 1.0f, 50.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		pisoTexture.UseTexture();
@@ -579,10 +579,10 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Caballos_M.RenderModel();
 
-		//Plantas
+
+		// Modelos de ambientacion
 		model = glm::mat4(1.0f);
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Planta_M.RenderModel();
 
 		//Bancas
 		Banca_M.RenderModel();
@@ -622,16 +622,6 @@ int main()
 		model = glm::translate(model, glm::vec3(-40.0f, -2.0f, -80.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		MesaBancos_M.RenderModel();
-
-		//puerta
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(55.0f, 0.0f, -8.0f));
-		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Puerta_M.RenderModel();
-		spotLights[1].SetPos(glm::vec3(45.0f, 13.0f, -8.0f));
-
-
 
 
 		// Panda
@@ -716,23 +706,27 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		TiendaRopa_M.RenderModel();
 
-		model = modelaux;
+		model = glm::mat4(1.0f);
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		ParedesTienda3_M.RenderModel();
+
 		//Puerta derecha
 		model = modelaux;
-		model = glm::translate(model, glm::vec3(0.0f+abre_puerta_izquierda, 10.0f, 40.0f));
+		model = glm::translate(model, glm::vec3(0.0f+abre_puerta_izquierda, 11.0f, 46.0f));
+		model = glm::scale(model, glm::vec3(2.7f, 0.5f, 1.0f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.3f, 0.1f, 0.3f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		PuertaDerecha_M.RenderModel();
+
 		//puerta izquierda
 		model = modelaux;
-		model = glm::translate(model, glm::vec3(0.0f + abre_puerta_derecha, 10.0f, 40.0f));
+		model = glm::translate(model, glm::vec3(0.0f + abre_puerta_derecha, 11.0f, 46.0f));
+		model = glm::scale(model, glm::vec3(2.7f, 0.5f, 1.0f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.3f, 0.1f, 0.3f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		PuertaIzquierda_M.RenderModel();
+
+
 		// Caballo
 
 		// Torso

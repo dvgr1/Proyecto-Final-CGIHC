@@ -15,6 +15,10 @@ Window::Window(GLint windowWidth, GLint windowHeight)
 	width = windowWidth;
 	height = windowHeight;
 	
+	playCarrusel = false;
+	openDoorSliding = false;
+	ActivarPanda = false;
+
 	for (size_t i = 0; i < 1024; i++)
 	{
 		keys[i] = 0;
@@ -121,14 +125,20 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 			//printf("se solto la tecla %d'\n", key);
 		}
 	}
-	if (key == GLFW_KEY_O)
-		theWindow->openDoorSliding = true;
-	if (key == GLFW_KEY_C) //True para abrir, false para cerrar
-		theWindow->openDoorSliding = false;
-	if (key == GLFW_KEY_P)
-		theWindow->playCarrusel = true;
-	if (key == GLFW_KEY_L) //True para iniciar la animacion, false para pararla
-		theWindow->playCarrusel = false;
+
+
+	
+	if (key == GLFW_KEY_C && action == GLFW_PRESS)
+	{
+		theWindow->playCarrusel = !(theWindow->playCarrusel);
+	}
+	
+	if (key == GLFW_KEY_P && action == GLFW_PRESS)
+	{
+		theWindow->ActivarPanda = !(theWindow->ActivarPanda);
+	}
+
+	
 }
 
 void Window::ManejaMouse(GLFWwindow* window, double xPos, double yPos)
@@ -156,6 +166,11 @@ void Window::ManejaMouseBoton(GLFWwindow* window, int button, int action, int mo
 	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
 	{
 		//printf("se presiono un boton del mouse ");
+	}
+
+	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
+	{
+		theWindow->openDoorSliding = !(theWindow->openDoorSliding);
 	}
 }
 

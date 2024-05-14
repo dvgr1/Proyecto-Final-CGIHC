@@ -13,6 +13,7 @@ public:
 	GLfloat getBufferHeight() { return bufferHeight; }
 	GLboolean getPlayCarrusel() { return playCarrusel; }
 	GLboolean getOpenDoorSliding() { return openDoorSliding; }
+	GLboolean getActivarPanda() { return ActivarPanda; }
 	GLfloat getXChange();
 	GLfloat getYChange();
 	bool getShouldClose() {
@@ -33,6 +34,7 @@ private:
 	GLfloat yChange;
 	GLboolean playCarrusel;
 	GLboolean openDoorSliding;
+	GLboolean ActivarPanda;
 	
 	
 	bool mouseFirstMoved;
