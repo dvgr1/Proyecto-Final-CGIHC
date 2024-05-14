@@ -1,0 +1,4 @@
+Borrar la carpeta Models descargada del repositorio y 
+en su lugar, descargar este ZIP con todos los modelos 
+Y ponerlos en una carpeta que se llame Models
+https://drive.google.com/file/d/1tThAKxh4682OPHsoBKhQDHSwavXg3X_6/view?usp=sharing
